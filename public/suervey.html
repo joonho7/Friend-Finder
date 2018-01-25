@@ -143,7 +143,7 @@
     <br>
     <footer class="footer text-center">
       <div class="container">
-        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/joonho7/Friend-Finder">GitHub</a>
+        <p><a href="/data/friends">API Friends List</a> | <a href="https://github.com/joonho7/Friend-Finder">GitHub</a>
       </div>
     </footer>
   </div>
@@ -175,7 +175,7 @@
     });
 
 
-    $(".submit").on("click", function(event) {
+    $("#submit").on("click", function(event) {
       event.preventDefault();
 
       var survey = {
@@ -195,7 +195,7 @@
 
       console.log(survey);
 
-    $.post("/api/friends", survey)
+    $.post("/data/friends", survey)
         .done(function(data){
           $('#userMatch').html(data.matchName);
           $("#userMatchImage").attr("src", data.matchImage);
