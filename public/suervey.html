@@ -136,7 +136,7 @@
     </select>
     <br>
     <br>
-    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit">Submit
+    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit" data-toggle='modal'>Submit
     </button>
     <br>
     <br>
@@ -146,6 +146,27 @@
       </div>
     </footer>
   </div>
+
+  <div class="modal fade" id='myModal'>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Your Best Match</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h4 id= 'userMatch'> </h4>
+            <img id= 'userMatchPhoto' src =''>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
   
   <script type="text/javascript">
 
@@ -170,14 +191,18 @@
       };
 
       console.log(survey);
-
-    $.post("/data/friends", survey)
+      var currentUrl = window.location.origin;
+    $.post(currentUrl +  "/data/friends", survey)
         .done(function(data){
           $('#userMatch').html(data.matchName);
-          $("#userMatchImage").attr("src", data.matchImage);
-          $('#modal1').modal('open');
+          $("#userMatchPhoto").attr("src", data.matchImage);
+          $('#myModal').modal('toggle');
+       console.log(data.matchName);
+       console.log(data.matchImage); 
     });
   });
+
+  
 
 </script>
 

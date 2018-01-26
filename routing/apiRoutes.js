@@ -13,6 +13,8 @@ module.exports = function(app) {
 		var matchImage = '';
 		var totalDifference = 10000; 
 
+		console.log(req.body);
+
 		for (var i = 0; i < friends.length; i++) {
 			var diff = 0;
 			for (var j = 0; j < userResponses.length; j++) {
@@ -21,7 +23,7 @@ module.exports = function(app) {
 			if (diff < totalDifference) {
 				totalDifference = diff;
 				matchName = friends[i].name;
-				matchImage = friends[i].picture;
+				matchImage = friends[i].photo;
 			}
 		}
 	 
