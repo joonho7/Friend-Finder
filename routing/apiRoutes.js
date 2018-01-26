@@ -8,7 +8,7 @@ module.exports = function(app) {
 
 	app.post('/data/friends', function(req, res) {
 		var userInput = req.body;
-		var userResponses = userInput.scores;
+		var userResponses = userInput.score;
 		var matchName = '';
 		var matchImage = '';
 		var totalDifference = 10000; 
@@ -16,15 +16,15 @@ module.exports = function(app) {
 		for (var i = 0; i < friends.length; i++) {
 			var diff = 0;
 			for (var j = 0; j < userResponses.length; j++) {
-				diff += Math.abs(friends[i].scores[j] - userResponses[j]);
+				diff += Math.abs(friends[i].score[j] - userResponses[j]);
 			}
 			if (diff < totalDifference) {
 				totalDifference = diff;
 				matchName = friends[i].name;
-				matchImage = friends[i].photo;
+				matchImage = friends[i].picture;
 			}
 		}
-
+	 
 		friends.push(userInput);
 		res.json({status: 'OK', matchName: matchName, matchImage: matchImage});
 	});

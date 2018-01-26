@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
 <body>
@@ -147,33 +146,8 @@
       </div>
     </footer>
   </div>
-
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Closest Friend Match</h4>
-      <div class="divider"></div>
-      <h5 id="userMatch"></h5>
-      <img id="userMatchImage" class="materialboxed" width="650" src="">
-    </div>
-    <div class="modal-footer">
-      <a href="/survey" class="modal-action modal-close waves-effect waves-green btn-flat">Fill Again!</a>
-    </div>
-  </div>
-
-
+  
   <script type="text/javascript">
-    $(document).ready(function() {
-      $('select').material_select();
-      $('.modal').modal({
-        dismissible: false, 
-        opacity: .5, 
-        inDuration: 300,
-        outDuration: 200, 
-        startingTop: '4%', 
-        endingTop: '10%' 
-      });
-    });
-
 
     $("#submit").on("click", function(event) {
       event.preventDefault();
@@ -181,17 +155,19 @@
       var survey = {
         name: $("#name").val().trim(),
         picture: $("#photo").val().trim(),
-        q1: $("#q1").val(),
-        q2: $("#q2").val(),
-        q3: $("#q3").val(),
-        q4: $("#q4").val(),
-        q5: $("#q5").val(),
-        q6: $("#q6").val(),
-        q7: $("#q7").val(),
-        q8: $("#q8").val(),
-        q9: $("#q9").val(),
-        q10: $("#q10").val()
-     };
+        score:[
+        $("#q1").val(),
+        $("#q2").val(),
+        $("#q3").val(),
+        $("#q4").val(),
+        $("#q5").val(),
+        $("#q6").val(),
+        $("#q7").val(),
+        $("#q8").val(),
+        $("#q9").val(),
+        $("#q10").val()
+      ]
+      };
 
       console.log(survey);
 
@@ -201,7 +177,7 @@
           $("#userMatchImage").attr("src", data.matchImage);
           $('#modal1').modal('open');
     });
-    });
+  });
 
 </script>
 
